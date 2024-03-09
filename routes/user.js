@@ -1,5 +1,5 @@
 const express = require('express');
-//const adminMiddleware=require("../middleware/admin")
+const adminMiddleware=require("../middleware/admin")
 const router=express.Router()
 
 
@@ -7,11 +7,11 @@ router.post('/signup',(req,res)=>{
 
 })
 
-router.post('/courses',(res,req)=>{
+router.post('/courses',adminMiddleware,(res,req)=>{
 
 })
 
-router.get('/courses',(req,res)=>{
+router.get('/courses',adminMiddleware,(req,res)=>{
 
 })
 

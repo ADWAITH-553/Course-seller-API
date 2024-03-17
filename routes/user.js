@@ -1,7 +1,8 @@
 const express = require('express');
 const adminMiddleware=require("../middleware/admin")
 const router=express.Router()
-const {user,course}=require("../db/index")
+const {user,course}=require("../db/index");
+const userMiddleware = require('../middleware/user');
 
 router.post('/signup',async (req,res)=>{
     const username=req.body.username
@@ -14,11 +15,12 @@ router.post('/signup',async (req,res)=>{
 })
 
 
-router.post('/courses',adminMiddleware,(res,req)=>{
-
+router.get('/courses',async (req,res)=>{
+    const allCourse= await course.find({})
+    res.json({courses:allCourse})
 })
 
-router.get('/courses',adminMiddleware,(req,res)=>{
+router.get('/courses',userMiddleware,(req,res)=>{
 
 })
 

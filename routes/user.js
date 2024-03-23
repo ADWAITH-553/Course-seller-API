@@ -43,4 +43,19 @@ router.post('/courses/:courseId',userMiddleware,async (req,res)=>{
     res.json("purchase complete")
 })
 
+router.get('/purchasedcourses',async (req,res)=>{
+    const user=await user.findOne({
+        username:req.headers.username
+})
+const courses=await course.find({
+    _id:{
+        "$in":user.purchasedCourses
+    }
+})
+
+res.json({
+    courses:courses
+})
+})
+
 module.exports = router

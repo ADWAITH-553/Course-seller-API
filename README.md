@@ -1,1 +1,1 @@
-# Course-selling-website
+# Course-seller-API
